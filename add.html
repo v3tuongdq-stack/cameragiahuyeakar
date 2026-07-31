@@ -201,30 +201,37 @@
     </div>
 
     <script>
-        const fileInput = document.getElementById('fileInput');
-        const btnChoose = document.getElementById('btnChooseImage');
-        const fileName = document.getElementById('fileName');
-        const previewBox = document.getElementById('previewBox');
-        const previewImg = document.getElementById('previewImg');
+document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('fileInput');
+    const btnChoose = document.getElementById('btnChooseImage');
+    const fileName = document.getElementById('fileName');
+    const previewBox = document.getElementById('previewBox');
+    const previewImg = document.getElementById('previewImg');
 
-        btnChoose.onclick = () => fileInput.click();
+    if (!btnChoose || !fileInput) {
+        console.error('Không tìm thấy nút hoặc ô chọn file');
+        return;
+    }
 
-        fileInput.onchange = function () {
-            if (this.files && this.files[0]) {
-                const file = this.files[0];
-                fileName.textContent = file.name;
+    btnChoose.addEventListener('click', function () {
+        fileInput.click();
+    });
 
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    previewImg.src = e.target.result;
-                    previewBox.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                fileName.textContent = 'Chưa chọn ảnh nào';
-                previewBox.style.display = 'none';
-            }
-        };
-    </script>
-</body>
-</html>
+    fileInput.addEventListener('change', function () {
+        if (this.files && this.files[0]) {
+            const file = this.files[0];
+            fileName.textContent = file.name;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+                previewBox.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            fileName.textContent = 'Chưa chọn ảnh nào';
+            previewBox.style.display = 'none';
+        }
+    });
+});
+</script>
