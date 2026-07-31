@@ -1,1 +1,226 @@
-
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Sản Phẩm Mới - CAMERA TECH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 20px;
+            max-width: 600px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3436;
+            font-size: 14px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #dfe6e9;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2ecee0;
+            background-color: #fff;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .btn-submit {
+            background-color: #fff200;
+            color: #2d3436;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-submit:hover {
+            background-color: #e6cc00;
+        }
+        .btn-cancel {
+            background-color: #f1f2f6;
+            color: #2d3436;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn-cancel:hover {
+            background-color: #dfe4ea;
+        }
+        /* Ô chọn ảnh */
+        .file-box {
+            border: 2px dashed #2ecee0;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            background: #f8fdfe;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .file-box:hover {
+            background: #e8f9fb;
+        }
+        .file-box input[type="file"] {
+            display: none;
+        }
+        .file-label {
+            color: #2ecee0;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        #previewBox {
+            margin-top: 15px;
+            display: none;
+        }
+        #previewImg {
+            max-width: 200px;
+            max-height: 150px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-logo">CAMERA TECH</div>
+      
+        <a href="index.html">
+            <i class="fas fa-chart-line"></i>
+            <span>Báo cáo doanh thu</span>
+        </a>
+        <a href="list.html">
+            <i class="fas fa-camera"></i>
+            <span>Danh sách Camera</span>
+        </a>
+        <a href="add.html" class="active">
+            <i class="fas fa-plus-circle"></i>
+            <span>Thêm sản phẩm mới</span>
+        </a>
+        <a href="list.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Quản lý đơn hàng</span>
+        </a>
+        <a href="list.html">
+            <i class="fas fa-users"></i>
+            <span>Khách hàng</span>
+        </a>
+        <a href="login.html" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Đăng xuất</span>
+        </a>
+    </div>
+    <!-- Nội dung chính -->
+    <div class="content">
+        <div class="header-area">
+            <h1>THÊM SẢN PHẨM / THIẾT BỊ MỚI ➕</h1>
+        </div>
+        <hr style="border: none; border-top: 1px solid #ddd; margin-bottom: 20px;">
+        <div class="form-container">
+            <form action="list.html" method="GET">
+                <div class="form-group">
+                    <label for="productName">Tên sản phẩm / Camera:</label>
+                    <input type="text" id="productName" placeholder="Ví dụ: Camera Wifi Ezviz C6N 1080P" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Phân loại danh mục:</label>
+                    <select id="category" required>
+                        <option value="">-- Chọn loại thiết bị --</option>
+                        <option value="wifi">Camera Wifi Trong Nhà / Ngoài Trời</option>
+                        <option value="ip">Camera Đầu Ghi / Dây IP PoE</option>
+                        <option value="network">Thiết Bị Mạng / Router Wifi</option>
+                        <option value="smarthome">Giải Pháp Smarthome</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="price">Giá bán niêm yết (VNĐ):</label>
+                    <input type="number" id="price" placeholder="Ví dụ: 590000" required>
+                </div>
+                <div class="form-group">
+                    <label for="warranty">Thời gian bảo hành:</label>
+                    <select id="warranty">
+                        <option value="12">12 Tháng</option>
+                        <option value="24" selected>24 Tháng (Tiêu chuẩn)</option>
+                        <option value="36">36 Tháng</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Số lượng nhập kho:</label>
+                    <input type="number" id="stock" placeholder="Ví dụ: 20" value="10">
+                </div>
+                <!-- CHỌN ẢNH -->
+                <div class="form-group">
+                    <label>Hình ảnh sản phẩm:</label>
+                    <div class="file-box" onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" accept="image/*">
+                        <div class="file-label">
+                            <i class="fas fa-cloud-upload-alt"></i> Nhấn để chọn ảnh từ máy
+                        </div>
+                        <div id="fileName" style="margin-top:8px; color:#636e72; font-size:13px;">Chưa chọn ảnh nào</div>
+                    </div>
+                    <div id="previewBox">
+                        <img id="previewImg" src="" alt="Preview">
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-save"></i> Lưu Sản Phẩm
+                    </button>
+                    <a href="list.html" class="btn-cancel">Hủy bỏ</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+        const previewBox = document.getElementById('previewBox');
+        const previewImg = document.getElementById('previewImg');
+        fileInput.addEventListener('change', function () {
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+                fileName.textContent = file.name;
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    previewBox.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                fileName.textContent = 'Chưa chọn ảnh nào';
+                previewBox.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
