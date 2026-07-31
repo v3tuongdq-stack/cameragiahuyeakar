@@ -1,46 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="vi">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <title>Đăng nhập</title>
-
-    <link rel="stylesheet" href="/css/style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Quản lý phòng trọ</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div class="login-box">
-
         <h2>QUẢN LÝ PHÒNG TRỌ</h2>
 
-        <form action="/login" method="post">
-
-            <input
-                type="text"
-                name="username"
-                placeholder="Tên đăng nhập"
+        <!-- Action trỏ thẳng về index.html để chuyển trang thành công -->
+        <form action="index.html" method="get">
+            <input 
+                type="text" 
+                name="username" 
+                placeholder="Tên đăng nhập" 
                 required>
 
-            <input
-                type="password"
-                name="password"
-                placeholder="Mật khẩu"
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Mật khẩu" 
                 required>
 
             <button type="submit">
-
                 Đăng nhập
-
             </button>
-
         </form>
-
-        <p style="color:red" th:text="${error}"></p>
-
     </div>
 
 </body>
