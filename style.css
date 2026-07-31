@@ -1,69 +1,259 @@
-body{
+/* style.css - Giao diện Quản trị Camera phong cách TGDĐ (MỚI 100%) */
 
-    background:#f5f5f5;
-
-    font-family:Arial, Helvetica, sans-serif;
-
+/* --- 1. Cài đặt cơ bản --- */
+:root {
+    --tgdd-blue: #2ecee0; /* Xanh dương đặc trưng */
+    --tgdd-yellow: #fff200; /* Vàng đặc trưng */
+    --tgdd-dark: #2d3436; /* Màu nền sidebar */
+    --text-dark: #2c3e50;
+    --bg-light: #f4f6f8;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.login-box{
-
-    width:350px;
-
-    margin:120px auto;
-
-    background:white;
-
-    padding:30px;
-
-    border-radius:10px;
-
-    box-shadow:0 0 10px gray;
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.login-box h2{
-
-    text-align:center;
-
-    margin-bottom:20px;
-
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    display: flex;
+    min-height: 100vh;
 }
 
-.login-box input{
-
-    width:100%;
-
-    padding:10px;
-
-    margin-top:10px;
-
+/* --- 2. Sidebar Menu --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--tgdd-dark);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    transition: all 0.3s;
+    z-index: 1000;
 }
 
-.login-box button{
-
-    width:100%;
-
-    margin-top:15px;
-
-    padding:10px;
-
-    background:#0d6efd;
-
-    color:white;
-
-    border:none;
-
-    cursor:pointer;
-
+.sidebar-logo {
+    color: var(--tgdd-yellow);
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 20px 30px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
 }
 
-.container{
+.sidebar a {
+    text-decoration: none;
+    color: #b2bec3; /* Màu chữ chưa active */
+    padding: 15px 25px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
 
-    width:900px;
+.sidebar a i {
+    margin-right: 15px;
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
 
-    margin:auto;
+.sidebar a:hover {
+    color: var(--white);
+    background-color: rgba(255,255,255,0.05);
+}
 
-    margin-top:50px;
+.sidebar a.active {
+    color: var(--tgdd-dark);
+    background-color: var(--tgdd-yellow); /* Màu vàng khi được chọn */
+    font-weight: bold;
+}
 
+.sidebar a.active i {
+    color: var(--tgdd-dark);
+}
+
+.sidebar .logout {
+    margin-top: auto; /* Đẩy nút đăng xuất xuống cuối */
+    color: #ff7675;
+}
+.sidebar .logout:hover {
+    background-color: #d63031;
+    color: white;
+}
+
+/* --- 3. Content Area --- */
+.content {
+    margin-left: 260px; /* Chừa chỗ cho sidebar */
+    width: calc(100% - 260px);
+    padding: 40px;
+    transition: all 0.3s;
+}
+
+/* --- 4. Trang Tổng quan (Dashboard) --- */
+.header-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.content h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+    border-left: 5px solid transparent;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card.revenue { border-left-color: var(--tgdd-blue); }
+.stat-card.expense { border-left-color: #ff7675; }
+.stat-card.profit { border-left-color: #00b894; }
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.stat-card .value {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.stat-card .sub-value {
+    font-size: 13px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+.info-box {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.info-box h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.info-box p {
+    line-height: 1.8;
+    color: #576574;
+}
+
+/* --- 5. Trang Đăng nhập --- */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--tgdd-dark);
+    height: 100vh;
+}
+
+.login-box {
+    background: var(--white);
+    width: 400px;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.login-box h2 {
+    text-align: center;
+    font-size: 22px;
+    color: var(--tgdd-dark);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    font-size: 16px;
+}
+
+.login-box input:focus {
+    outline: none;
+    border-color: var(--tgdd-blue);
+}
+
+.login-box button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--tgdd-yellow);
+    color: var(--tgdd-dark);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-box button:hover {
+    background-color: #e6cc00;
+}
+
+/* --- 6. Responsive --- */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 80px;
+    }
+    .sidebar-logo {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+    .sidebar a {
+        padding: 15px;
+        justify-content: center;
+    }
+    .sidebar a i {
+        margin-right: 0;
+    }
+    .sidebar a span {
+        display: none; /* Ẩn chữ trên mobile */
+    }
+    .content {
+        margin-left: 80px;
+        width: calc(100% - 80px);
+        padding: 20px;
+    }
 }
