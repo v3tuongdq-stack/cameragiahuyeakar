@@ -3,45 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý Cửa hàng Camera & Giải pháp Công nghệ</title>
+    <title>Hệ thống Quản lý Camera - Phong cách TGDĐ</title>
+    <!-- Nhúng FontAwesome để có icon đẹp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Sidebar Menu -->
+    <!-- Sidebar Menu (MỚI 100%) -->
     <div class="sidebar">
-        <h2 style="color: #fff200; text-align: center; font-size: 18px; text-transform: uppercase;">CAMERA & TECH STORE</h2>
-        <a href="index.html" style="background: #444;">📊 Báo cáo doanh thu</a>
-        <a href="list.html">📷 Danh sách sản phẩm</a>
-        <a href="add.html">➕ Thêm sản phẩm mới</a>
-        <a href="list.html">📦 Quản lý đơn hàng</a>
-        <a href="login.html" style="margin-top: 50px; color: #ff7675;">➡️ Đăng xuất</a>
+        <div class="sidebar-logo">CAMERA TECH</div>
+        
+        <a href="index.html" class="active">
+            <i class="fas fa-chart-line"></i>
+            <span>Báo cáo doanh thu</span>
+        </a>
+        <a href="list.html">
+            <i class="fas fa-camera"></i>
+            <span>Danh sách Camera</span>
+        </a>
+        <a href="list.html">
+            <i class="fas fa-microchip"></i>
+            <span>Thiết bị Công nghệ</span>
+        </a>
+        <a href="list.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Quản lý đơn hàng</span>
+        </a>
+        <a href="list.html">
+            <i class="fas fa-users"></i>
+            <span>Khách hàng</span>
+        </a>
+
+        <a href="login.html" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Đăng xuất</span>
+        </a>
     </div>
 
-    <!-- Main Content Area -->
+    <!-- Main Content Area (MỚI 100%) -->
     <div class="content">
-        <h1>BÁO CÁO DOANH THU & BÁN HÀNG THÁNG NÀY 📈</h1>
-        <hr>
+        <div class="header-area">
+            <h1>Báo cáo bán hàng tháng này 📉</h1>
+            <p style="color: #7f8c8d;">Cập nhật lúc 08:00 AM</p>
+        </div>
+        <hr style="border: none; border-top: 1px solid #ddd; margin-bottom: 30px;">
 
         <div class="stat-grid">
-            <div class="stat-card bg-revenue" style="background-color: #2ecee0;">
+            <div class="stat-card revenue">
                 <h3>TỔNG DOANH THU CAMERA</h3>
-                <p>125.400.000 VNĐ</p>
+                <div class="value" style="color: var(--tgdd-blue);">125,400,000đ</div>
+                <div class="sub-value">↑ 12% so với tháng trước</div>
             </div>
-            <div class="stat-card bg-expense" style="background-color: #ff7675;">
+            <div class="stat-card expense">
                 <h3>CHI PHÍ NHẬP HÀNG & LẮP ĐẶT</h3>
-                <p>78.200.000 VNĐ</p>
+                <div class="value" style="color: #ff7675;">78,200,000đ</div>
+                <div class="sub-value">↑ 5% so với tháng trước</div>
             </div>
-            <div class="stat-card bg-profit" style="background-color: #00b894;">
+            <div class="stat-card profit">
                 <h3>LỢI NHUẬN THỰC TẾ</h3>
-                <p>47.200.000 VNĐ</p>
+                <div class="value" style="color: #00b894;">47,200,000đ</div>
+                <div class="sub-value">↑ 25% so với tháng trước</div>
             </div>
         </div>
 
-        <div class="report-box" style="margin-top: 30px; padding: 20px; background: #fff; border-radius: 8px;">
+        <div class="info-box">
             <h2>📌 Đánh giá hoạt động kinh doanh Cửa hàng</h2>
-            <p style="line-height: 1.6; color: #34495e;">
-                Dự án hiện đang hỗ trợ quản lý danh mục <strong>Camera quan sát (Hikvision, Ezviz, Dahua)</strong>, <strong>Thiết bị mạng (Wifi, Router)</strong> và <strong>Giải pháp Smarthome</strong>.
+            <p>
+                Giao diện hiện tại được thiết kế theo phong cách chuyên nghiệp, hiện đại, lấy tông màu xanh-vàng làm chủ đạo để mang lại cảm giác tin cậy và "chất" bán lẻ công nghệ.
+            </p>
+            <p style="margin-top: 10px;">
+                Dữ liệu hiện tại đang là dữ liệu "mock" để hiển thị giao diện. Để hệ thống hoạt động thật, bạn cần kết nối Backend Java Spring Boot đã có.
             </p>
         </div>
     </div>
